@@ -34,8 +34,11 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initViews();
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        toolbar.setTitle("Cheers");
+//        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+//        toolbar.setTitleMarginStart(8);
+//        setSupportActionBar(toolbar);
 
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {

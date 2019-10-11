@@ -20,7 +20,7 @@ public class Home extends AppCompatActivity implements RecyclerViewOnClickCervej
     public static final String CERVEJARIA_KEY = "cervejaria";
 
     private RecyclerView recyclerCervejaria;
-    private CervejariaAdapter adapterCervejaria;
+    private CervejariaAdapter adapter;
     private List<Cervejaria> listaCervejaria = new ArrayList<>();
 
 
@@ -28,13 +28,13 @@ public class Home extends AppCompatActivity implements RecyclerViewOnClickCervej
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         recyclerCervejaria = findViewById(R.id.RecyclerBrbidas);
-        adapterCervejaria= new CervejariaAdapter(listarCervejaria(), this );
-        recyclerCervejaria.setAdapter(adapterCervejaria);
+        adapter= new CervejariaAdapter(listarCervejaria(), this );
+        recyclerCervejaria.setAdapter(adapter);
         recyclerCervejaria.setLayoutManager(new LinearLayoutManager(this));
     }
 
