@@ -26,8 +26,6 @@ public class Cadastro extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
         initViews();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         buttonCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override

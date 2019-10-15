@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme.AppBarOverlay"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerCervejaria"
         android:layout_width="match_parent"
         android:layout_height="680dp"
        />

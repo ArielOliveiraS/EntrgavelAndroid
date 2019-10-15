@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.entregavelandroid.R;
+import com.example.entregavelandroid.interfaces.RecyclerViewOnClickBebida;
 import com.example.entregavelandroid.model.Bebida;
 
 import static com.example.entregavelandroid.views.DetalheCervejaria.BEBIDA_KEY;
@@ -17,6 +18,7 @@ public class DetalheBebida extends AppCompatActivity {
     private TextView nomeBebida;
     private TextView descricaoBebida;
     private ImageView imagemBebida;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

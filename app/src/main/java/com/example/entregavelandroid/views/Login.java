@@ -34,11 +34,6 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initViews();
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        toolbar.setTitle("Cheers");
-//        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
-//        toolbar.setTitleMarginStart(8);
-//        setSupportActionBar(toolbar);
 
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -46,20 +41,6 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 validarDados();
 
-//                String email = inputEmail.getEditText().getText().toString();
-//                String password = inputPassword.getEditText().getText().toString();
-//
-//                if (!email.isEmpty() && !password.isEmpty()){
-//                    Intent intent = new Intent(Login.this, Home.class);
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString(EMAIL_KEY, email);
-//                    bundle.putString(PASSWORD_KEY, password);
-//                    intent.putExtras(bundle);
-//                    startActivity(intent);
-//                }else {
-//                    Toast.makeText(getApplicationContext(), "Preencha o campo vazio!", Toast.LENGTH_SHORT).show();
-//
-//                }
             }
         });
 

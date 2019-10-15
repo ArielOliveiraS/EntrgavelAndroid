@@ -28,11 +28,8 @@ public class Home extends AppCompatActivity implements RecyclerViewOnClickCervej
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-//
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
-        recyclerCervejaria = findViewById(R.id.RecyclerBrbidas);
+        recyclerCervejaria = findViewById(R.id.RecyclerCervejaria);
         adapter= new CervejariaAdapter(listarCervejaria(), this );
         recyclerCervejaria.setAdapter(adapter);
         recyclerCervejaria.setLayoutManager(new LinearLayoutManager(this));

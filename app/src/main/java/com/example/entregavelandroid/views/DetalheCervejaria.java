@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.entregavelandroid.R;
 import com.example.entregavelandroid.adapter.BebidaAdapter;
 import com.example.entregavelandroid.interfaces.RecyclerViewOnClickBebida;
+import com.example.entregavelandroid.interfaces.RecyclerViewOnClickCervejaria;
 import com.example.entregavelandroid.model.Bebida;
 import com.example.entregavelandroid.model.Cervejaria;
 
@@ -25,7 +26,7 @@ public class DetalheCervejaria extends AppCompatActivity  implements RecyclerVie
     public static final String BEBIDA_KEY = "bebida";
     private ImageView imagemBanner;
     private TextView nomeCervejaria;
-    private RecyclerView recyclerViewBebidas;
+    private RecyclerView recyclerViewOnClickBebida;
     private BebidaAdapter adapter;
 
 
@@ -43,10 +44,11 @@ public class DetalheCervejaria extends AppCompatActivity  implements RecyclerVie
             imagemBanner.setImageDrawable(drawable);
             nomeCervejaria.setText(cervejaria.getNome());
         }
-        recyclerViewBebidas = findViewById(R.id.RecyclerBrbidas);
+        recyclerViewOnClickBebida = findViewById(R.id.RecyclerBrbidas);
+
         adapter = new BebidaAdapter(listaDeBebidas(), this);
-        recyclerViewBebidas.setAdapter(adapter);
-        recyclerViewBebidas.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerViewOnClickBebida.setAdapter(adapter);
+        recyclerViewOnClickBebida.setLayoutManager(new GridLayoutManager(this, 2));
 
     }
 
@@ -66,14 +68,16 @@ public class DetalheCervejaria extends AppCompatActivity  implements RecyclerVie
     private void initViews() {
         imagemBanner = findViewById(R.id.imgBannerCervejaria);
         nomeCervejaria = findViewById(R.id.txtNomeCervejaria);
-    }
+        recyclerViewOnClickBebida = findViewById(R.id.RecyclerBrbidas);
 
+
+    }
 
     @Override
     public void onClick(Bebida bebida) {
         Intent intent = new Intent(getApplicationContext(), DetalheBebida.class);
         Bundle bundle = new Bundle();
-        bundle.putParcelable(BEBIDA_KEY, bebida);
+        bundle.putParcelable("BEBIDA", bebida);
         intent.putExtras(bundle);
         startActivity(intent);
 
