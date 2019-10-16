@@ -16,25 +16,25 @@ import com.example.entregavelandroid.model.Cervejaria;
 
 import java.util.List;
 
-public class CervejariaAdapter extends RecyclerView.Adapter<CervejariaAdapter.ViewHolderCervejaria> {
-    private List<Cervejaria> cervejarias;
+public class CervejariaAdapter extends RecyclerView.Adapter<CervejariaAdapter.ViewHolder> {
+    private List<Cervejaria> listaDeCervejarias;
     private RecyclerViewOnClickCervejaria listener;
 
     public CervejariaAdapter(List<Cervejaria> cervejarias, RecyclerViewOnClickCervejaria listener) {
-        this.cervejarias = cervejarias;
+        this.listaDeCervejarias = cervejarias;
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public ViewHolderCervejaria onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_cervejaria, parent, false);
-        return new ViewHolderCervejaria(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderCervejaria holder, int position) {
-        final Cervejaria cervejaria = cervejarias.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final Cervejaria cervejaria = listaDeCervejarias.get(position);
         holder.onBind(cervejaria);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,23 +42,20 @@ public class CervejariaAdapter extends RecyclerView.Adapter<CervejariaAdapter.Vi
                 listener.onClick(cervejaria);
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
-        return cervejarias.size();
+        return listaDeCervejarias.size();
     }
 
-
-    public class ViewHolderCervejaria extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtNomeCervejaria;
         TextView txtEndereçoCervejaria;
         TextView txtHorarioFuncionamento;
         ImageView imagemCervejaria;
 
-
-        public ViewHolderCervejaria(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNomeCervejaria = itemView.findViewById(R.id.txtNomeCervejaria);
             txtEndereçoCervejaria = itemView.findViewById(R.id.txtItemEndereço);
@@ -66,7 +63,7 @@ public class CervejariaAdapter extends RecyclerView.Adapter<CervejariaAdapter.Vi
             imagemCervejaria = itemView.findViewById(R.id.imgBannerCervejaria);
         }
 
-        public void onBind( Cervejaria cervejaria){
+            public void onBind( Cervejaria cervejaria){
             Drawable drawable = itemView.getResources().getDrawable(cervejaria.getImagem());
             txtNomeCervejaria.setText(cervejaria.getNome());
             txtHorarioFuncionamento.setText(cervejaria.getHorarioFuncionamento());

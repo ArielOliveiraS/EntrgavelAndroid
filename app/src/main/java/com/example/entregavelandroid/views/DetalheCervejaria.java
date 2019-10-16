@@ -23,11 +23,15 @@ import java.util.List;
 import static com.example.entregavelandroid.views.Home.CERVEJARIA_KEY;
 
 public class DetalheCervejaria extends AppCompatActivity  implements RecyclerViewOnClickBebida {
+
     public static final String BEBIDA_KEY = "bebida";
     private ImageView imagemBanner;
     private TextView nomeCervejaria;
+    private TextView horarioFunc;
+    private TextView endereço;
     private RecyclerView recyclerViewOnClickBebida;
     private BebidaAdapter adapter;
+    private  List<Bebida> listaDeBebidas = new ArrayList<>();
 
 
 
@@ -46,28 +50,18 @@ public class DetalheCervejaria extends AppCompatActivity  implements RecyclerVie
         }
         recyclerViewOnClickBebida = findViewById(R.id.RecyclerBrbidas);
 
-        adapter = new BebidaAdapter(listaDeBebidas(), this);
+        adapter = new BebidaAdapter(listaDeBebidas, this);
         recyclerViewOnClickBebida.setAdapter(adapter);
         recyclerViewOnClickBebida.setLayoutManager(new GridLayoutManager(this, 2));
 
     }
 
-    private List<Bebida> listaDeBebidas(){
-        List<Bebida> bebidas = new ArrayList<>();
-
-        bebidas.add(new Bebida("Lohn Bier Sour ", R.drawable.lohn, "Cerveja Lohn Bier Sour IPA 330ml"));
-        bebidas.add(new Bebida("Leopoldina ", R.drawable.leopoldina, "Leopoldina APA 500ml"));
-        bebidas.add(new Bebida("Leopoldina Russian", R.drawable.leopoldinarussian, "Leopoldina Russian Imperial Stout 750ml"));
-        bebidas.add(new Bebida("klein Bier Weiss", R.drawable.klein, "klein Bier Weiss 500ml"));
-        bebidas.add(new Bebida("Imigração Pilsen", R.drawable.imigacaopilsen, "Imigração Pilsen 355ml"));
-        bebidas.add(new Bebida("bamberg Franconian Rhapsody", R.drawable.bamberg, "bamberg Franconian Rhapsody 600ml"));
-
-        return  bebidas;
-    }
 
     private void initViews() {
         imagemBanner = findViewById(R.id.imgBannerCervejaria);
         nomeCervejaria = findViewById(R.id.txtNomeCervejaria);
+        endereço = findViewById(R.id.txtItemEndereço);
+        horarioFunc = findViewById(R.id.txtItemHorario);
         recyclerViewOnClickBebida = findViewById(R.id.RecyclerBrbidas);
 
 
@@ -75,10 +69,8 @@ public class DetalheCervejaria extends AppCompatActivity  implements RecyclerVie
 
     @Override
     public void onClick(Bebida bebida) {
-        Intent intent = new Intent(getApplicationContext(), DetalheBebida.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("BEBIDA", bebida);
-        intent.putExtras(bundle);
+        Intent intent = new Intent(this, DetalheBebida.class);
+        intent.putExtra(BEBIDA_KEY, bebida);
         startActivity(intent);
 
     }

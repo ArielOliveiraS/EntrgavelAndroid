@@ -11,6 +11,7 @@ import android.os.Bundle;
 import com.example.entregavelandroid.R;
 import com.example.entregavelandroid.adapter.CervejariaAdapter;
 import com.example.entregavelandroid.interfaces.RecyclerViewOnClickCervejaria;
+import com.example.entregavelandroid.model.Bebida;
 import com.example.entregavelandroid.model.Cervejaria;
 
 import java.util.ArrayList;
@@ -20,8 +21,9 @@ public class Home extends AppCompatActivity implements RecyclerViewOnClickCervej
     public static final String CERVEJARIA_KEY = "cervejaria";
 
     private RecyclerView recyclerCervejaria;
-    private CervejariaAdapter adapter;
+    private CervejariaAdapter cervejariaAdapter;
     private List<Cervejaria> listaCervejaria = new ArrayList<>();
+    private List<Bebida> bebidas = new ArrayList<>();
 
 
     @Override
@@ -30,29 +32,37 @@ public class Home extends AppCompatActivity implements RecyclerViewOnClickCervej
         setContentView(R.layout.activity_home);
 
         recyclerCervejaria = findViewById(R.id.RecyclerCervejaria);
-        adapter= new CervejariaAdapter(listarCervejaria(), this );
-        recyclerCervejaria.setAdapter(adapter);
+
+        cervejariaAdapter= new CervejariaAdapter(listarCervejaria(), this );
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerCervejaria.setAdapter(cervejariaAdapter);
         recyclerCervejaria.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public List<Cervejaria> listarCervejaria(){
 
-        listaCervejaria.add(new Cervejaria( "Perro Libre", "Endereço: Rua Cunha Gago, 83  – Pinheiros, São Paulo – SP",
-                " Horários: 15h - 00h", R.drawable.perrolibre));
-        listaCervejaria.add(new Cervejaria( "Bec Bar ", "Endereço: Rua Padre Garcia Velho, 72 – Pinheiros São Paulo/SP",
-                " Horários: 12h - 00h", R.drawable.becbar));
-        listaCervejaria.add(new Cervejaria( "Soul Botequim", "Endereço: Av. Padre Antonio Jose dos Santos 812, São Paulo",
-                " Horários: 16h - 01h", R.drawable.soulbotequim));
-        listaCervejaria.add(new Cervejaria( "Cervejaria Dogma", "Endereço: R. Fortunato, 236 - Vila Buarque, São Paulo - SP,",
-                " Horários: 15h - 00h", R.drawable.cervejariadogma));
-        listaCervejaria.add(new Cervejaria( "Goose Island", "Endereço: R. Baltazar Carrasco, 187 - Pinheiros, São Paulo - SP",
-                " Horários: 14h - 00h", R.drawable.gooseisland));
-        listaCervejaria.add(new Cervejaria( "Camara Fria Bar", "Endereço: R. Graúna, 137 - Moema, São Paulo - SP",
-                " Horários: 12h - 01h", R.drawable.camarafria));
+        listaCervejaria.add(new Cervejaria( "Perro Libre", "Endereço: Rua Cunha Gago, 83  – Pinheiros, São Paulo – SP", " Horários: 15h - 00h", R.drawable.perrolibre));
+        listaCervejaria.add(new Cervejaria( "Bec Bar ", "Endereço: Rua Padre Garcia Velho, 72 – Pinheiros São Paulo/SP"," Horários: 12h - 00h", R.drawable.becbar));
+        listaCervejaria.add(new Cervejaria( "Soul Botequim", "Endereço: Av. Padre Antonio Jose dos Santos 812, São Paulo"," Horários: 16h - 01h", R.drawable.soulbotequim));
+        listaCervejaria.add(new Cervejaria( "Cervejaria Dogma", "Endereço: R. Fortunato, 236 - Vila Buarque, São Paulo - SP,"," Horários: 15h - 00h", R.drawable.cervejariadogma));
+        listaCervejaria.add(new Cervejaria( "Goose Island", "Endereço: R. Baltazar Carrasco, 187 - Pinheiros, São Paulo - SP", " Horários: 14h - 00h", R.drawable.gooseisland));
+        listaCervejaria.add(new Cervejaria( "Camara Fria Bar", "Endereço: R. Graúna, 137 - Moema, São Paulo - SP", " Horários: 12h - 01h", R.drawable.camarafria));
 
 
         return listaCervejaria;
     }
+
+        private List<Bebida> listaDeBebidas(){
+
+        bebidas.add(new Bebida("Lohn Bier Sour ", R.drawable.lohn, "Cerveja Lohn Bier Sour IPA 330ml"));
+        bebidas.add(new Bebida("Leopoldina ", R.drawable.leopoldina, "Leopoldina APA 500ml"));
+        bebidas.add(new Bebida("Leopoldina Russian", R.drawable.leopoldinarussian, "Leopoldina Russian Imperial Stout 750ml"));
+        bebidas.add(new Bebida("klein Bier Weiss", R.drawable.klein, "klein Bier Weiss 500ml"));
+        bebidas.add(new Bebida("Imigração Pilsen", R.drawable.imigacaopilsen, "Imigração Pilsen 355ml"));
+        bebidas.add(new Bebida("bamberg Franconian Rhapsody", R.drawable.bamberg, "bamberg Franconian Rhapsody 600ml"));
+
+        return  bebidas;
+   }
 
 
     @Override

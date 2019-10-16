@@ -16,25 +16,26 @@ import com.example.entregavelandroid.model.Bebida;
 
 import java.util.List;
 
-public class BebidaAdapter extends RecyclerView.Adapter<BebidaAdapter.ViewHolderBebida> {
+public class BebidaAdapter extends RecyclerView.Adapter<BebidaAdapter.ViewHolder> {
     private List<Bebida> bebidas;
     private RecyclerViewOnClickBebida listener;
 
-    public BebidaAdapter(List<Bebida> bebida, RecyclerViewOnClickBebida listener){
-        this.bebidas = bebida;
+
+    public BebidaAdapter(List<Bebida> bebidas, RecyclerViewOnClickBebida listener){
+        this.bebidas =bebidas;
         this.listener = listener;
     }
 
 
     @NonNull
     @Override
-    public BebidaAdapter.ViewHolderBebida onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_cerveja, parent, false);
-        return new ViewHolderBebida(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BebidaAdapter.ViewHolderBebida holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Bebida bebida = bebidas.get(position);
         holder.onBind(bebida);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +44,7 @@ public class BebidaAdapter extends RecyclerView.Adapter<BebidaAdapter.ViewHolder
                 listener.onClick(bebida);
             }
         });
+
     }
 
     @Override
@@ -50,18 +52,19 @@ public class BebidaAdapter extends RecyclerView.Adapter<BebidaAdapter.ViewHolder
         return bebidas.size();
     }
 
-    public class ViewHolderBebida extends RecyclerView.ViewHolder {
-        TextView txtBebida;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView nomeBebida;
         ImageView imagemBebida;
 
-        public ViewHolderBebida(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtBebida = itemView.findViewById(R.id.txtItemNomeCerveja);
+            nomeBebida = itemView.findViewById(R.id.txtItemNomeCerveja);
             imagemBebida = itemView.findViewById(R.id.imgItemBebida);
+
         }
 
         public void onBind(Bebida bebida) {
-            txtBebida.setText(bebida.getNomeBebida());
+            nomeBebida.setText(bebida.getNomeBebida());
             Drawable drawable = itemView.getResources().getDrawable(bebida.getImgBebida());
             imagemBebida.setImageDrawable(drawable);
 

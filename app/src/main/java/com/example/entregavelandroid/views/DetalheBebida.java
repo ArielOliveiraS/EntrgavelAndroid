@@ -14,7 +14,7 @@ import com.example.entregavelandroid.model.Bebida;
 import static com.example.entregavelandroid.views.DetalheCervejaria.BEBIDA_KEY;
 
 public class DetalheBebida extends AppCompatActivity {
-
+//    public static final String BEBIDA_KEY = "bebida";
     private TextView nomeBebida;
     private TextView descricaoBebida;
     private ImageView imagemBebida;
@@ -27,8 +27,10 @@ public class DetalheBebida extends AppCompatActivity {
         initViews();
 
         if (getIntent() != null && getIntent().getExtras() != null) {
+
             Bebida bebida = getIntent().getExtras().getParcelable(BEBIDA_KEY);
             Drawable drawable = getResources().getDrawable(bebida.getImgBebida());
+
             imagemBebida.setImageDrawable(drawable);
             nomeBebida.setText(bebida.getNomeBebida());
             descricaoBebida.setText(bebida.getDescrBebida());
@@ -37,7 +39,7 @@ public class DetalheBebida extends AppCompatActivity {
     }
 
     private void initViews() {
-        nomeBebida = findViewById(R.id.txtItemNomeCervejaria);
+        nomeBebida = findViewById(R.id.txtNomeBebidaDetalhe);
         descricaoBebida = findViewById(R.id.txtDescrBebida);
         imagemBebida = findViewById(R.id.imgBebidaDetalhe);
     }
