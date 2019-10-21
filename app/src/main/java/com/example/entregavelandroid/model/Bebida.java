@@ -22,6 +22,18 @@ public class Bebida implements Parcelable {
 
     }
 
+    public static final Creator<Bebida> CREATOR = new Creator<Bebida>() {
+        @Override
+        public Bebida createFromParcel(Parcel in) {
+            return new Bebida(in);
+        }
+
+        @Override
+        public Bebida[] newArray(int size) {
+            return new Bebida[size];
+        }
+    };
+
     public String getNomeBebida() {
         return nomeBebida;
     }
@@ -46,28 +58,15 @@ public class Bebida implements Parcelable {
         this.descrBebida = descrBebida;
     }
 
-    public static final Creator<Bebida> CREATOR = new Creator<Bebida>() {
-        @Override
-        public Bebida createFromParcel(Parcel in) {
-            return new Bebida(in);
-        }
-
-        @Override
-        public Bebida[] newArray(int size) {
-            return new Bebida[size];
-        }
-    };
-
-
     @Override
     public int describeContents() {
         return 0;
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(nomeBebida);
-        dest.writeString(descrBebida);
-        dest.writeInt(imgBebida);
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(nomeBebida);
+        parcel.writeInt(imgBebida);
+        parcel.writeString(descrBebida);
     }
 }

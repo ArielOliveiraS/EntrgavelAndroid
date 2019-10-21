@@ -5,5 +5,4 @@ import com.example.entregavelandroid.model.Bebida;
 
 public interface RecyclerViewOnClickBebida {
      void onClick (Bebida bebida);
-
 }

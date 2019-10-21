@@ -76,7 +76,9 @@ public class Login extends AppCompatActivity {
             startActivity(new Intent(Login.this, Home.class));
         }
 
-    }}
+    }
+
+}
 
 
 //        if (!validateEmail(email) && !validatePassword(senha)) {

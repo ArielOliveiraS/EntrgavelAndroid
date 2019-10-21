@@ -57,10 +57,10 @@ public class CervejariaAdapter extends RecyclerView.Adapter<CervejariaAdapter.Vi
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtNomeCervejaria = itemView.findViewById(R.id.txtNomeCervejaria);
+            txtNomeCervejaria = itemView.findViewById(R.id.txtItemNomeCervejaria);
             txtEndereçoCervejaria = itemView.findViewById(R.id.txtItemEndereço);
             txtHorarioFuncionamento = itemView.findViewById(R.id.txtItemHorario);
-            imagemCervejaria = itemView.findViewById(R.id.imgBannerCervejaria);
+            imagemCervejaria = itemView.findViewById(R.id.imgBanner);
         }
 
             public void onBind( Cervejaria cervejaria){

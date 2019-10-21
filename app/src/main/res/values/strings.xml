@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EntregavelAndroid</string>
+    <string name="perfil_settings">Perfil</string>
 </resources>

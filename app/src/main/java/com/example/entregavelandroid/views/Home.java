@@ -1,5 +1,6 @@
 package com.example.entregavelandroid.views;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.entregavelandroid.R;
 import com.example.entregavelandroid.adapter.CervejariaAdapter;
@@ -23,20 +26,25 @@ public class Home extends AppCompatActivity implements RecyclerViewOnClickCervej
     private RecyclerView recyclerCervejaria;
     private CervejariaAdapter cervejariaAdapter;
     private List<Cervejaria> listaCervejaria = new ArrayList<>();
-    private List<Bebida> bebidas = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Toolbar toolbar = findViewById(R.id.toobar);
 
-        recyclerCervejaria = findViewById(R.id.RecyclerCervejaria);
+        recyclerCervejaria = findViewById(R.id.recyclerCervejaria);
 
         cervejariaAdapter= new CervejariaAdapter(listarCervejaria(), this );
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerCervejaria.setAdapter(cervejariaAdapter);
         recyclerCervejaria.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item, menu);
+        return true;
     }
 
     public List<Cervejaria> listarCervejaria(){
@@ -52,17 +60,6 @@ public class Home extends AppCompatActivity implements RecyclerViewOnClickCervej
         return listaCervejaria;
     }
 
-        private List<Bebida> listaDeBebidas(){
-
-        bebidas.add(new Bebida("Lohn Bier Sour ", R.drawable.lohn, "Cerveja Lohn Bier Sour IPA 330ml"));
-        bebidas.add(new Bebida("Leopoldina ", R.drawable.leopoldina, "Leopoldina APA 500ml"));
-        bebidas.add(new Bebida("Leopoldina Russian", R.drawable.leopoldinarussian, "Leopoldina Russian Imperial Stout 750ml"));
-        bebidas.add(new Bebida("klein Bier Weiss", R.drawable.klein, "klein Bier Weiss 500ml"));
-        bebidas.add(new Bebida("Imigração Pilsen", R.drawable.imigacaopilsen, "Imigração Pilsen 355ml"));
-        bebidas.add(new Bebida("bamberg Franconian Rhapsody", R.drawable.bamberg, "bamberg Franconian Rhapsody 600ml"));
-
-        return  bebidas;
-   }
 
 
     @Override
